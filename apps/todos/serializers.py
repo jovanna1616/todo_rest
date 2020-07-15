@@ -3,7 +3,8 @@ from todos.models import Todo
 from django.contrib.auth.models import User
 
 class TodoSerializer(serializers.ModelSerializer):
-    created_by = serializers.HyperlinkedRelatedField(view_name='todo-creator', read_only=True)
+    created_by = serializers.ReadOnlyField(source='created_by.username')
+    # title max=100 chars - check validation prebaciti na serializer
     class Meta:
         model = Todo
         fields = ['id', 'title', 'content', 'created_at', 'created_by']

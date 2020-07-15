@@ -13,6 +13,3 @@ class Todo(models.Model):
 
     class Meta:
         ordering = ['created_at']
-
-    def save(self, *args, **kwargs):
-        super(Todo, self).save(*args, **kwargs)
