@@ -1,4 +1,4 @@
-"""todo_rest URL Configuration
+"""django_rest URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.0/topics/http/urls/
@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import routers
+from todos import views
+
+router = routers.DefaultRouter()
 
 urlpatterns = [
-    path('', include('todos.urls')),
-    path('admin/', admin.site.urls),
+    path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace = 'rest_framework')),
     path('todos/', include('todos.urls')),
 ]
