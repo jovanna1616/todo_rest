@@ -48,6 +48,7 @@ class CustomUser(AbstractBaseUser):
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["username",]
+    objects = UserManager()
 
     class Meta:
         ordering = ['date_joined']
