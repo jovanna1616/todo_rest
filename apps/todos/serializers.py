@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from todos.models import Todo
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
+from users.models import CustomUser
 # from rest_framework.validators import UniqueValidator
 # from rest_framework.validators import UniqueTogetherValidator
 from todos.validators import validate_todo_title
@@ -27,11 +28,4 @@ class TodoSerializer(serializers.ModelSerializer):
         # ]
         fields = ['id', 'title', 'content', 'created_at', 'created_by']
         
-class UserSerializer(serializers.ModelSerializer):
-    todos = serializers.HyperlinkedRelatedField(many=True, view_name='todo-detail', read_only=True)
-    class Meta:
-        model = User
-        fields = ['url', 'id', 'username', 'todos']
-
-
 
