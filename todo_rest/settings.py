@@ -40,10 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # other apps
+    'corsheaders',
     'rest_framework',
+    'rest_framework.authtoken',
     'todos.apps.TodosConfig',
     'users.apps.UsersConfig',
-    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +135,11 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
 )
+CORS_ALLOW_CREDENTIALS = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
